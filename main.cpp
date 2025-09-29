@@ -1,7 +1,6 @@
 #include "Image_Class.h"
 #include <iostream>
 using namespace std;
-
 Image check_name(string& imgName) {
     Image img;
     while (true) {
@@ -16,11 +15,9 @@ Image check_name(string& imgName) {
         }
     }
 }
-
 Image load_img(string img_name) {
     return Image(img_name);
 }
-
 void save_img(Image img, string& img_name, string imgName) {
     char choice;
     cout << "Do you want to save the image with the same file name? (y/n): ";
@@ -37,7 +34,6 @@ void save_img(Image img, string& img_name, string imgName) {
         cout << "Image saved as " << new_name << endl;
     }
 }
-
 Image invert_image(Image img) {
     for (int i = 0; i < img.width; i++) {
         for (int j = 0; j < img.height; j++) {
@@ -48,7 +44,6 @@ Image invert_image(Image img) {
     }
     return img;
 }
-
 Image grey_scale(Image img) {
     for (int i = 0; i < img.height; i++) {
         for (int j = 0; j < img.width; j++) {
@@ -154,6 +149,5 @@ int main() {
                 cout << "Invalid option. Please try again." << endl;
         }
     }
-
     return 0;
 }
