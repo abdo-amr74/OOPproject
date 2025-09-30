@@ -2,8 +2,8 @@
 #include "Image_Class.h"
 #include <iostream>
 using namespace std;
-bool validExtension(string filename) {
-    size_t dotPos = filename.find_last_of(".");
+bool valid_extension(string filename) {
+    int dotPos = filename.find_last_of(".");
     if (dotPos == -1) {
         return false;
     }
@@ -43,7 +43,7 @@ void save_img(Image img, string& img_name, string imgName) {
         cout << "Please enter the new name with format: ";
         string new_name;
         cin >> new_name;
-        while (!validExtension(new_name)) {
+        while (!valid_extension(new_name)) {
             cout << "Invalid extension! Please enter a valid one (.jpg, .bmp, .png, .tga): ";
             cin >> new_name;
         }
@@ -181,19 +181,14 @@ Image rotated_image(Image img )
     }
 }
 Image BW(const Image& original) {
-
     Image image = original;
-
     for (int i = 0; i < image.width; ++i) {
         for (int j = 0; j < image.height; ++j) {
-            unsigned int avg = 0;
-
+            int avg = 0;
             for (int k = 0; k < 3; ++k) {
                 avg += image(i, j, k);
             }
-
             avg /= 3;
-
             int val;
             if (avg >= 128) {
                 val = 255;
@@ -201,7 +196,6 @@ Image BW(const Image& original) {
             else {
                 val = 0;
             }
-
             image(i, j, 0) = val;
             image(i, j, 1) = val;
             image(i, j, 2) = val;
